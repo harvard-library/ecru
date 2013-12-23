@@ -1,0 +1,11 @@
+# expected: a fully-defined URL to the solr instance
+solr.url=
+
+# if you're building a war, you need this stuff:
+catalina.home= 
+appserver.home=
+java.home=
+#default for ecru.solr.home is {absolute path to ecru}/solr 
+ecru.solr.home=
+# if defined, the solr data will be somewhere other than the default location
+ecru.solr.data= 

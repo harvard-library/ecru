@@ -1,0 +1,8 @@
+/tomcat
+*.class
+conf/ecru.properties
+conf/test_ecru.properties
+ecru/etc/conf/Catalina/solr.xml 
+etc/conf/Catalina/solr.xml
+webapps/ecru/WEB-INF/lib/*
+webapps/ecru/WEB-INF/web.xml

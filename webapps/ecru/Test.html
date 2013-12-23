@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css"  href="css/ecru.css" />
+
+<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/ecru.js"></script>
+<script type="text/javascript">
+var baseUrl = "http://cicero.lib.harvard.edu:8080/ecru/v1/";
+function doSearch(searchStuff, inUrl) {
+	var url = inUrl;
+	if (!url) {
+	 url = baseUrl + "/all?q=";
+	}
+	if (searchStuff) {
+		url = url + searchStuff;
+	}
+	//alert(url);
+	$.ajax({
+		url: url,
+		dataType: "jsonp",
+		jsonp: "jsonp",
+		crossDomain: true,
+		data: {},
+		success: function(data) {
+	    var results = document.getElementById('rs');
+	    $(results).empty();
+	    var $sum = getSummary(data.summary);
+	    
+	    $(results).append($sum);
+	    $divResults = $("<div class='results'></div>");
+	    $ul = $("<ul class='resultsList'></ul><");
+	    for (var i = 0; i < data.items.length; i++) {
+	      $ul.append(doItem(data.items[i]));
+	    }
+	    $divResults.append($ul);
+	    $(results).append($divResults);
+	    var facets = document.getElementById('fc');
+	    $(facets).empty();
+	    
+	    if (data.faceting) {
+	    	var str = doFaceting(data.faceting);
+	    	var fcDiv = document.createElement("DIV");
+	    	fcDiv.innerHTML = str;
+	    	facets.appendChild(fcDiv);
+		}
+	 	 }
+		});
+}
+
+$(document).ready(function() {
+	$("#search").click(function(){
+		var path = $("input:radio[name='keyw']:checked").val();
+		var url = baseUrl + path;
+		doSearch($("#searchStuff").val(), url);
+		return false;
+	});
+	$("a.solr").live("click", function() { 
+			doSearch("", $(this).attr("href"));
+								return false;});
+});
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Course Reserves Unleashed!  Demo page</title>
+</head>
+<body>
+<h1>Course Reserves Unleashed! <br/> Demo Page</h1>
+<p><strong>Course Reserves Unleashed!</strong> consists of 
+the  <strong>ecru 
+(<u>e</u>lectronic <u>c</u>ourse <u>r</u>eserves <u>u</u>nleashed)</strong> database, an instance of 
+<a href="http://lucene.apache.org/solr/" target="_new">Apache Solr 4.*</a>,
+which backs a robust RESTful API pattern set for querying the books, 
+articles, and weblinks that are &quot;reserved&quot; for a particular course.</p>
+<p>At Harvard, a job runs daily that updates the <strong>ecru</strong> database with 
+data from the 
+<a href="http://hul.harvard.edu/ois/systems/rlist/" target="_new">Reserves List System</a>
+(aka the &quot;Reserves Tool&quot;), but the underlying software is designed to 
+support reserves data from other sources as well.
+</p>
+<p>This page (<em>rather crudely</em>) demonstrates the use of AJAX + json to query the  database .</p>
+<p>Let your cursor linger over each of the choices below to see the underlying API pattern endpoint.</p>
+<form id="searchForm" name="searchForm">
+Search: <input type="text" name="searchStuff" id="searchStuff"/>
+
+<input type="submit" value="Search" id="search" />
+<div>
+<label title="/all/terms/current?q="><input type="radio" name="keyw" value="all/terms/current?q=" checked="checked"/> Keywords anywhere</label>
+<label title="/readings/terms/current?q=*:*&fq=reading.author:" ><input type="radio" name="keyw" value="readings/terms/current?q=*:*&fq=reading.author:" /> Author keywords</label>
+<label title="/readings/terms/current?q=*:*&fq=reading.title:"><input type="radio" name="keyw" value="readings/terms/current?q=*:*&fq=reading.title:" />Title keywords</label>
+<label title="/courses/terms/current?q="><input type="radio" name="keyw" value="courses/terms/current?q=" />Course keywords</label>
+</div>
+</form>
+
+<div id="rs">
+
+</div>
+
+<div id="fc">
+</div>
+</body>
+</html>
