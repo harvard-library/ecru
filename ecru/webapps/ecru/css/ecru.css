@@ -1,0 +1,32 @@
+/* for Test.html */
+h1 {text-align: center;
+	font-size: 120%;
+	font-family: Baskerville, Baskerville Old Face, Hoefler Text, Garamond, Times New Roman, serif;
+	font-weight: bold; 
+	width: 80%;
+}
+h2 { font-size: 110%; font-family: serif; font-weight: bold;}
+h3 { font-size: 105%; font-family: serif; font-weight: bold;}
+u {font-weight: bold;}
+div.results ul.resultsList li { list-style-type: none; padding-bottom: 5px; margin-bottom: 5px;}
+div.results ul.resultsList li.course {
+ 	 background: url(../icons/lecture.png) no-repeat;
+	padding-left: 50px;
+ }
+ div.results ul.resultsList li.reading {
+  background: url(../icons/reading.png) no-repeat;
+  padding-left: 50px;
+}
+p {font-family: serif; width: 70%; }
+div.results {clear: both; top-margin: 5px; top-padding: 5px;}
+.pn: {width: 50%; }
+span.title {font-weight:bold; color:#990033;}
+span.no {font-style:italic;}
+span.next {margin-left: 5px; padding-left: 5px;}
+
+a {color:black}
+a:hover {color:gold}
+#rs { float:left; width: 60%;}
+#fc { float: right;}
+#fc ul {list-style-type: none;}
+#fc ul li ul{list-style-type: none;}
