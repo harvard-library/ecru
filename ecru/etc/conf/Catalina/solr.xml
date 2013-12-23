@@ -1,0 +1,8 @@
+<!--  this needs to go into {catalina_base}/conf/Catalina/localhost if you
+    are including the solr.war in the same tomcat instance -->
+<!-- solr.home has to be a fully-specified path -->
+
+<Context path="/solr"      crossContext="true">
+   <Environment name="solr/home" type="java.lang.String" value="/home/ecru/qa/solr/" 
+                override="true"/>
+</Context>
