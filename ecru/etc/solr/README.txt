@@ -1,6 +1,9 @@
 This directory contains the configuration and other files needed to be placed underneath
 SOLR_HOME.
 
+Note that we are using the "core discovery" [version 4+] method of defining 
+the solr core(s).
+
 The files in *this* directory are placed as follows:
 
 
