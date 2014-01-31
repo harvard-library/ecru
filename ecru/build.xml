@@ -1,6 +1,6 @@
 
-<project name="DRS2 Web Admin Build File" default="doall" basedir=".">
-
+<project name="Ecru Build File" default="doall" basedir=".">
+<!--TODO: move stuff out of the etc/ dirs... -->
   <!-- ===================== Property Definitions =========================== -->
 
   <property file="build-local.properties"/>
