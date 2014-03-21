@@ -20,6 +20,6 @@ The underlying **solr 4** instance is currently incorporated into the built .war
   
 **src/** contains the usual
 
-**test/* contains what is currently a limited number of JUnit tests
+**test/** contains what is currently a limited number of JUnit tests
 
 **conf/templates** contains templates of property files used by the source and test classes.  See the **build-local.properties.template** for what properties are needed. The *ecru.properties* file includes properties for presenting "nice" labels for facet fields.
