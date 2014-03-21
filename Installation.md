@@ -4,7 +4,7 @@
 
 
 The current configuration is built using
-ant ( https://ant.apache.org/ ) and deployed as a .war file to a tomcat instance.
+ant ( https://ant.apache.org/ ) and deployed as a .war file to a tomcat instance.  The build.xml is at **ecru/build.xml**
 
 The underlying **solr 4** instance is currently incorporated into the built .war file.
 
@@ -22,4 +22,4 @@ The underlying **solr 4** instance is currently incorporated into the built .war
 
 **ecru/test/** contains what is currently a limited number of JUnit tests
 
-**ecru/conf/templates** contains templates of property files used by the source and test classes.  See the **build-local.properties.template** for what properties are needed. The *ecru.properties* file includes properties for presenting "nice" labels for facet fields.
+**ecru/conf/templates** contains templates of property files used by the source and test classes.  See the **ecru/build-local.properties.template** for what properties are needed. The *ecru.properties* file includes properties for presenting "nice" labels for facet fields.
