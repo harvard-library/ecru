@@ -10,16 +10,16 @@ The underlying **solr 4** instance is currently incorporated into the built .war
 
 ## Structure
 
-**lib/** contains the libraries needed for *ecru*
+**ecru/lib/** contains the libraries needed for *ecru*
 
-**etc/** 
+**ecru/etc/** 
 
-  * If you are running **solr 4** under tomcat, see **etc/conf/Catalina/solr.xml.template**
+  * If you are running **solr 4** under tomcat, see **ecru/etc/conf/Catalina/solr.xml.template**
   
-  * **etc/solr/** contains all the files needed for the *solr 4* instance. See the **etc/solr/README.txt** for more information on that. 
+  * **ecru/etc/solr/** contains all the files needed for the *solr 4* instance. See the **ecru/etc/solr/README.txt** for more information on that. 
   
-**src/** contains the usual
+**ecru/src/** contains the usual
 
-**test/** contains what is currently a limited number of JUnit tests
+**ecru/test/** contains what is currently a limited number of JUnit tests
 
-**conf/templates** contains templates of property files used by the source and test classes.  See the **build-local.properties.template** for what properties are needed. The *ecru.properties* file includes properties for presenting "nice" labels for facet fields.
+**ecru/conf/templates** contains templates of property files used by the source and test classes.  See the **build-local.properties.template** for what properties are needed. The *ecru.properties* file includes properties for presenting "nice" labels for facet fields.
