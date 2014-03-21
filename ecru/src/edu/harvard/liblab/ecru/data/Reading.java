@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**********************************************************************
- * [INSERT COPYRIGHT INFO]
+ *   Please see LICENSE.txt
  **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
  *   This POJO class reflects the "Reading" type in the Solr database
  *   A Reading contains the bibliographic information for a single item, 
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 /**
  * @author bobbi
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *  
  */
 public class Reading extends EcruBase {
@@ -168,12 +168,11 @@ public class Reading extends EcruBase {
 	}
 	
 	/* 
-	 *  Override jaxb methods that don't apply to Readings
+	 *  Override (make transient) jaxb methods that don't apply to Readings
 	 */
 	@Override
 	@XmlTransient
 	public String getCatNo() {
-		// TODO Auto-generated method stub
 		return super.getCatNo();
 	}
 
@@ -181,7 +180,6 @@ public class Reading extends EcruBase {
 	@Override
 	@XmlTransient
 	public String getDivision() {
-		// TODO Auto-generated method stub
 		return super.getDivision();
 	}
 
@@ -189,7 +187,6 @@ public class Reading extends EcruBase {
 	@Override
 	@XmlTransient
 	public List<String> getInstructors() {
-		// TODO Auto-generated method stub
 		return super.getInstructors();
 	}
 
@@ -207,7 +204,6 @@ public class Reading extends EcruBase {
 	@Override
 	@XmlTransient
 	public boolean isReadings() {
-		// TODO Auto-generated method stub
 		return super.isReadings();
 	}
 
@@ -215,7 +211,6 @@ public class Reading extends EcruBase {
 	@Override
 	@XmlTransient
 	public String getUrl() {
-		// TODO Auto-generated method stub
 		return super.getUrl();
 	}
 	

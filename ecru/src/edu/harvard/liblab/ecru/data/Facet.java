@@ -2,12 +2,12 @@ package edu.harvard.liblab.ecru.data;
 
 import javax.xml.bind.annotation.XmlElement;
 /**********************************************************************
- * [INSERT COPYRIGHT INFO]
+ *   Please see LICENSE.txt
  **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
  *   This POJO class contains the information for a single facet from a solr search, 
  *  
@@ -18,7 +18,7 @@ public class Facet {
 	private String title;
 	private String url;
 	public Facet() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	@XmlElement
 	public long getCount() {

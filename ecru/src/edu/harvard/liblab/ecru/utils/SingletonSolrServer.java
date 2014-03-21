@@ -5,14 +5,16 @@ import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import edu.harvard.liblab.ecru.SolrClientException;
 
 /**********************************************************************
- * [INSERT COPYRIGHT INFO]
+ *   Please see LICENSE.txt
  **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
- *  This singleton class contains the methods needed for talking to Solr.
+ *  This singleton class contains the methods needed for talking to Solr in 
+ *  a single threaded way.  It may no longer be needed, as some of the solr bugs
+ *  that caused HttpClient threads not to be terminated seem to have been fixed.
  *  
  *  At this point, I don't see a need to do double-checked locking per
  *  http://www.ibm.com/developerworks/java/library/j-dcl/index.html

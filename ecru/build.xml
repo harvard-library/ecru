@@ -8,9 +8,7 @@
 
   <!-- ==================== File and Directory Names ======================== -->
 
-  <property name="ois.buildfile.type"    value="internal-build"/>
-  <property name="ois.buildfile.version" value="2.0"/>
-  <property name="app.name"              value="${project.shortName}"/>
+   <property name="app.name"              value="${project.shortName}"/>
   <property name="context.name"          value="${app.name}"/>
   <property name="jar.name"	         	 value="${app.name}.jar"/>
   <property name="jar.home"	         	 value="lib"/>

@@ -5,12 +5,12 @@ import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import edu.harvard.liblab.ecru.SolrClientException;
 
 /**********************************************************************
- * [INSERT COPYRIGHT INFO]
+ *   Please see LICENSE.txt
  **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
  *  This singleton class contains the methods needed for talking to Solr.
  *  
@@ -20,16 +20,16 @@ import edu.harvard.liblab.ecru.SolrClientException;
  */
 public class SolrServer {
 	
-	private static HttpSolrServer solrSrvr;
+	private static String solrUrl = null;;
 	
 	private  SolrServer() {
 	}
 	
 	public static HttpSolrServer getSolrServer() throws SolrClientException {
-		if (solrSrvr == null) {
+		if (solrUrl == null) {
 			throw new SolrClientException("Solr Server was never initialized with a URL");
 		}
-		return solrSrvr;
+		return getSolrServer(solrUrl);
 	}
 	
 	/**
@@ -37,15 +37,9 @@ public class SolrServer {
 	 * @return
 	 */
 	public static HttpSolrServer getSolrServer(String url) {
-		if (solrSrvr == null) {
-			init(url);
-		}
-		return solrSrvr;
+		solrUrl = url;
+		return new HttpSolrServer(url);
 	}
 	
-	private static void init(String url) {
-		if (solrSrvr == null) {
-			solrSrvr = new HttpSolrServer(url);
-		}
-	}
+
 }

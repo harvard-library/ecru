@@ -17,12 +17,12 @@ import javax.ws.rs.core.UriInfo;
 import edu.harvard.liblab.ecru.data.ResultsList;
 
 /**********************************************************************
- * [INSERT COPYRIGHT INFO]
+ *   Please see LICENSE.txt
  **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
  *   Handles Courses solr call
  *  
@@ -40,7 +40,7 @@ public class Courses {
 	 * 
 	 */
 	public Courses() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	

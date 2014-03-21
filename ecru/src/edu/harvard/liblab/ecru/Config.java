@@ -2,7 +2,16 @@ package edu.harvard.liblab.ecru;
 
 import java.util.Properties;
 
-
+/**********************************************************************
+ *   Please see LICENSE.txt
+ **********************************************************************/
+/**
+ * @author Bobbi Fox
+ *
+ *   Project:  ecru
+ *    Handles the configurable aspects of things
+ *    
+*/
 public class Config {
 	
 	public String SOLR_URL;

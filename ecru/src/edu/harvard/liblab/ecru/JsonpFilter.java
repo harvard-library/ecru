@@ -1,9 +1,9 @@
-/* [INSERT COPYRIGHT INFO]
+/*   Please see LICENSE.txt
 		 **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
  *   Handles jsonP  requests
  *
@@ -58,8 +58,13 @@ import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+/**********************************************************************
+ *   Please see LICENSE.txt
+ **********************************************************************/
 /**
+ * @author Bobbi Fox
+ *
+ *   Project:  ecru
 * Adds padding to json responses when the 'jsonp' parameter is specified.
 */
 public class JsonpFilter implements Filter {

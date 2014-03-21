@@ -16,12 +16,12 @@ import javax.ws.rs.core.UriInfo;
 
 import edu.harvard.liblab.ecru.data.ResultsList;
 /**********************************************************************
- * [INSERT COPYRIGHT INFO]
+ *   Please see LICENSE.txt
  **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
  *  Handles solr calls to Readings
  *  
@@ -37,7 +37,7 @@ public class Readings {
 	static final String READING_FQ = "id:";
 	
 	public Readings() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	@GET
 	@Path("courses/{cid}")

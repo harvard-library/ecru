@@ -1,7 +1,6 @@
 package edu.harvard.liblab.ecru.rs;
 
 import java.net.URI;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,12 +40,12 @@ import edu.harvard.liblab.ecru.data.Summary;
 import edu.harvard.liblab.ecru.utils.SolrServer;
 
 /**********************************************************************
- * [INSERT COPYRIGHT INFO]
+ *   Please see LICENSE.txt
  **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
  *   provides static methods used by other resources
  *  
@@ -232,7 +231,7 @@ public class ResourceUtils {
 		return facetMap;
 	}
 
-	//TODO: deal with facets later
+	
 	public static ResultsList createResultsList(QueryResponse qr,  String inputRows, UriInfo req) 
 			throws Exception {
 		ResultsList rl = new ResultsList();

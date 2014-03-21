@@ -36,6 +36,7 @@ public class TestCourse {
 	private static  DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	@BeforeClass
 	public static void setUp() throws Exception {
+		System.err.println("TestCourse startup");
 		Properties props = new Properties();
 		try {
 			props.load(new FileInputStream("conf/test_ecru.properties"));
@@ -117,7 +118,7 @@ public class TestCourse {
 	
 	@AfterClass
 	public static void tearDown() {
-
+		System.err.println("TestCourse tearDown");
 		try {
 			solrSrvr.deleteByQuery("id:c_x328182");
 			solrSrvr.commit();

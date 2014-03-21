@@ -3,12 +3,12 @@ package edu.harvard.liblab.ecru.data;
 import javax.xml.bind.annotation.XmlElement;
 
 /**********************************************************************
- * [INSERT COPYRIGHT INFO]
+ *   Please see LICENSE.txt
  **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
  *   This POJO class containing the summary information for a solr search, 
  *   corresponding to the responseHeader portion.
@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlElement;
 /**
  * @author bobbi
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *  
  */
 public class Summary {

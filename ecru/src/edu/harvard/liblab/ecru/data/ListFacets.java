@@ -9,12 +9,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**********************************************************************
- * [INSERT COPYRIGHT INFO]
+ *   Please see LICENSE.txt
  **********************************************************************/
 /**
  * @author Bobbi Fox
  *
- *   Project:  unleashed
+ *   Project:  ecru
  *   
  *   This POJO class contains a List of facets from  a solr search, 
  *  

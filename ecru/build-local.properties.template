@@ -1,0 +1,7 @@
+# expected: a fully-defined URL to the solr instance
+solr.url=
+
+# if you're building a war, you need this stuff:
+catalina.home= 
+appserver.home=/users/bobbi/tomcat-7
+java.home=/usr/java6
