@@ -72,7 +72,7 @@ public class Reading extends EcruBase {
 			String system, String term, String title) {
 		super(id, EcruBase.T_READING, displayLabel, endDate, startDate, term, 
 				new Date());
-		
+		this.setAnnotation(annotation);
 		this.setAuthors(authors);
 		this.setAvailUrl( availUrl);
 		this.setSysId(sysId);
@@ -86,6 +86,7 @@ public class Reading extends EcruBase {
 		this.setJournal( journal);
 		this.setLectureDate(lectureDate);
 		this.setLibrary(library);
+		this.setOrder(order);
 		this.setPubmed(pubmed);
 		this.setRequired(required);
 		this.setStatus(status);
