@@ -17,7 +17,7 @@
 	
 	<filter-mapping>
 		<filter-name>JsonpHandlingFilter</filter-name>
-		<servlet-name>du.harvard.liblab.ecru.EcruApplication</servlet-name>
+		<servlet-name>edu.harvard.liblab.ecru.EcruApplication</servlet-name>
 	</filter-mapping> 
 	<servlet>
         <servlet-name>edu.harvard.liblab.ecru.EcruApplication</servlet-name>
