@@ -138,6 +138,13 @@ public class Course extends EcruBase {
 
 	@Override
 	@XmlTransient
+	public int getOrder() {
+		// TODO Auto-generated method stub
+		return super.getOrder();
+	}
+
+	@Override
+	@XmlTransient
 	public String getPubmed() {
 		return super.getPubmed();
 	}
