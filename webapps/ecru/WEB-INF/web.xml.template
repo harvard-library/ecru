@@ -24,7 +24,7 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>javax.ws.rs.core.Application</servlet-name>
+        <servlet-name>edu.harvard.liblab.ecru.EcruApplication</servlet-name>
         <url-pattern>/v2/*</url-pattern>
     </servlet-mapping>
 	
