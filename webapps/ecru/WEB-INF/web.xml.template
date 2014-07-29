@@ -17,10 +17,10 @@
 	
 	<filter-mapping>
 		<filter-name>JsonpHandlingFilter</filter-name>
-		<servlet-name>javax.ws.rs.core.Application</servlet-name>
+		<servlet-name>du.harvard.liblab.ecru.EcruApplication</servlet-name>
 	</filter-mapping> 
 	<servlet>
-        <servlet-name>javax.ws.rs.core.Application</servlet-name>
+        <servlet-name>edu.harvard.liblab.ecru.EcruApplication</servlet-name>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>

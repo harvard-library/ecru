@@ -270,34 +270,7 @@
     </javadoc>
   </target>
 
-<!-- ======================== CVS Release Target ========================== -->
 
-  <target name="cvs-release" depends="check-cvs.existing">
-
-     <!-- TBD: verify all jars in lib -->
-     <!-- TBD: check for RELEASE.txt -->
-
-     <fail unless="cvs.version.present" message="cvs.version.* properties not set in project.properties"/>
-
-     <cvs command="tag ${app.name}_${cvs.version.major}_${cvs.version.minor}_${cvs.version.micro}_release"
-          failonerror="true"
-     />
-
-     <!-- create a new directory for this release in the archives -->
-     <property name="archive.directory"
-               value="${source.archive}/${app.name}-${cvs.version.major}.${cvs.version.minor}.${cvs.version.micro}"/>
-
-     <!-- make the new archive directory and copy the jar file to it-->
-     <mkdir dir="${archive.directory}"/>
-     <copy file="${jar.home}/${jar.name}" tofile="${archive.directory}/${jar.name}"/>
-
-     <!-- recreate the symbolic link to point to the new version of -->
-     <!-- the jar file -->
-     <delete file="${source.directory}/${jar.name}"/>
-     <exec dir="${source.directory}" executable="/bin/ln">
-       <arg line="-s ${archive.directory}/${jar.name} ${jar.name}"/>
-     </exec> 
-  </target>
 
 <!-- ==================== Check and Set Targets =========================== -->
 
@@ -318,15 +291,7 @@
   </target>
 
 
-  <target name="check-cvs.version">
-    <condition property="cvs.version.present">
-      <and>
-        <isset property="cvs.version.major" />
-        <isset property="cvs.version.minor" />
-        <isset property="cvs.version.micro" />
-      </and>
-    </condition>
-  </target>
+
 
   <target name="check-instance-location" unless="instance">
 
@@ -355,66 +320,10 @@
             addproperty="instance" />
   </target>
 
-  <target name="check-cvs.existing" depends="check-cvs.version">
-    <fail unless="cvs.version.present" message="cvs.version.* properties not set in project.properties"/>
-    <exec executable="sh" outputproperty="cvs.output">
-      <arg line="-c 'cvs status -v build.xml | grep ${app.name}_${cvs.version.major}_${cvs.version.minor}_${cvs.version.micro}_release'" />
-    </exec>
-    
-    <condition property="cvs.notupdated">
-      <length string="${cvs.output}" trim="true" when="greater" length="0" />
-    </condition>
-
-     <fail if="cvs.notupdated" message="cvs release ${app.name}_${cvs.version.major}_${cvs.version.minor}_${cvs.version.micro}_release already exists" />
-  </target>
+ 
 
 
-<!-- Minifi Javascript and CSS -->
 
-	<!--
-	
-<target name="concatenate-js" description="Concatenate all js files">
-    <concat destfile="tomcat/webapps/drs2_webadmin/app.js">
-        <fileset dir="tomcat/webapps/drs2_webadmin/js/" includes="**/*.js" />
-    </concat>
-</target>
-	
-<target name="concatenate-css" description="Concatenate all css files">
-    <concat destfile="tomcat/webapps/drs2_webadmin/app.css">
-        <fileset dir="tomcat/webapps/drs2_webadmin/css/" includes="**/*.css" />
-    </concat>
-</target>	
-
-<target name="compress-js" depends="concatenate-js" description="Compress app.js to app-min.js">
-    <apply executable="java" parallel="false" dest="tomcat/webapps/drs2_webadmin/">
-        <filelist dir="tomcat/webapps/drs2_webadmin/" files="app.js" />
-        <arg line="-jar" />
-        <arg path="lib/yuicompressor-2.4.6.jar" />
-        <srcfile />
-        <arg line="-o" />
-        <mapper type="glob" from="app.js" to="app-min.js" />
-        <targetfile />
-    </apply>
-</target>
-
-<target name="compress-css" depends="concatenate-css" description="Compress app.css to app-min.css">
-    <apply executable="java" parallel="false" dest="tomcat/webapps/drs2_webadmin/">
-        <filelist dir="tomcat/webapps/drs2_webadmin/" files="app.css" />
-        <arg line="-jar" />
-        <arg path="lib/yuicompressor-2.4.6.jar" />
-        <srcfile />
-        <arg line="-o" />
-        <mapper type="glob" from="app.css" to="app-min.css" />
-        <targetfile />
-    </apply>
-</target>
-	
-<target name="compress-all" description="compresses js and css files">
-	<antcall target="compress-js" />
-	<antcall target="compress-css" />
-</target>
-	
-	-->
 	
 	
 	<!-- ====================================== NEW BUILD 2.0 deployment tasks ==================================== -->
@@ -431,7 +340,6 @@
 			<war warfile="webapps/${war-file}" webxml="${web-xml-file}">
 				<classes dir="${webinf.home}/classes">
 						<include name="*.properties" />
-						<include name="aes_webadmin_key" />
 				</classes>
 				<fileset dir="${build.home}" >
 					<exclude name="META-INF" />
@@ -440,7 +348,6 @@
 				</fileset>
 				<lib dir="${webinf.home}/lib/">
 					<exclude name="servlet_api.jar"/>
-				    <!-- <exclude name="jdbc1.jar"/> -->
 				 </lib>
 					
 				<manifest>
