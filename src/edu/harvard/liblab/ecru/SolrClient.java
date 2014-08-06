@@ -14,15 +14,10 @@ import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.util.EntityUtils;
 
+/**********************************************************************
+ *   Please see LICENSE.txt
+ **********************************************************************/
 
-
-
-
-/**
- * A wrapper for connecting to solr
- * @author scm220
- *
- */
 /**
  * @author bobbi
  *
