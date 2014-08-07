@@ -17,7 +17,11 @@
 -->
 
 <!--  
- This is the Solr schema file for "Electronic Course Reserves Unleashed!" [ecru]. This file should be named "schema.xml" and
+ This is the Solr schema file for "Electronic Course Reserves Unleashed!" [ecru]. 
+  It should be in the conf/ directory of appropriate core directory (e.g.: /solr/home/ecru/V2/conf/ecru_v2.xml)
+  You can rename it to schema.xml if you don't want to add the schema property to 
+  your core.properties file.
+  This file should be named "schema.xml" and
  should be in the conf directory under the solr home
  (i.e. ./solr/conf/schema.xml by default) 
  or located where the classloader for the Solr webapp can find it.
@@ -25,7 +29,7 @@
  
 -->
 
-<schema name="ecru_v1" version="1.5">
+<schema name="ecru_v2" version="2.0">
   
 
  <fields>
@@ -86,6 +90,10 @@ For Reading/bib:
 <field name="reading.avail_url" type="string" stored="true" indexed="false" multiValued="false"/>
 <!-- a link to a display of availability of the reading, if any -->
 <field name="reading.required" type="boolean" indexed="true" stored="true"/>
+<field name="reading.order" type="int" indexed="true" stored="true" default="-1"/>
+<!-- if the instructor has assigned an order to the reading -->
+<field name="reading.annotation" type="string" indexed="false" stored="true"/>
+<!-- if the instructor makes an annotation (e.g. 'first chapter only') for the reading -->
 <field name="reading.course_id" type="string" stored="true" indexed="true" multiValued="false"/>
 <!-- the course id -->
 

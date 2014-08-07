@@ -7,12 +7,12 @@ the solr core(s).
 The files in *this* directory are placed as follows:
 
 
-SOLR_HOME/solr.xml
-SOLR_HOME/{collection name -- currently V1}/core.properties
+solr.xml
+v2/
+	core.properties
+	conf/   
+     	# contains the supporting files, including ecru_v2.xml, which contains the schema.
 
-
-See the solr/conf/README for details on the components that go in the
-SOLR_HOME/{collection name }/conf/
-
+If you are already using solr, you need merely to move v2 and its contents to your SOLR_HOME; otherwise, move this directory to the parent directory of where you intend SOLR_HOME to be.
 
 
