@@ -12,7 +12,7 @@
   <property name="context.name"          value="${app.name}"/>
   <property name="jar.name"	         	 value="${app.name}.jar"/>
   <property name="jar.home"	         	 value="lib"/>
-  <property name="config.home"	         value="conf"/>
+  <property name="config.home"	         value="etc/conf"/>
   <property name="compile.dirs"	         value="src"/>
   
   <property name="javadoc.home"          value="javadoc"/>
@@ -23,12 +23,13 @@
   <property name="webinf.home" value="${build.home}/WEB-INF"/>
   
   <!-- ==================== Build 2.0 enhancements ======================== -->
-  <property name="appserver.home"	value="${appserver.home}"/>	
-  <!-- property name="appserver.home"	value="/usr/local/tomcat7"/ -->	
+  <!--  we need this in case there's a compile against a jar in the appserver (like servlet.jar) -->
+  <property name="appserver.lib"	value="${appserver.lib}"/>	
+  <!-- property name="appserver.lib"	value="/usr/local/tomcat7/lib/" -->	
   <property name="war-file" 		value="${app.name}.war" />
   <property name="web-xml-file" 	value="${webinf.home}/web.xml" />
 
-  <property name="deployments.home"	value="${appserver.home}/webapps"/>
+  <property name="deployments.home"	value="${deployments.home}"/>
 	
 <!-- ===================== Compilation Control Options ==================== -->
 
@@ -41,8 +42,6 @@
   <path id="compile.classpath">
     <fileset dir=".">
       <include name="lib/*.jar"/>
-    <!-- special for lts code! -->
-      <include name="lib_lts/*.jar"/>
     </fileset>
   </path>
 	
@@ -78,7 +77,7 @@
 	     </exec> 
 		<!-- call post-config.sh-->
 		<exec executable="${project.base}/${project.dir}/bin/post-config.sh">
-			<arg line="${instance}"/> 
+		<!-- this is where you'd put any args	<arg line="${arg1}"/>  -->
 		</exec>
 	</target>
 	
@@ -97,18 +96,17 @@
 	<available file="${project.base}/${project.dir}/bin/post-config.sh" type="file" property="post-config.available"/>
   </target>
 
-  <target name="config" depends="check-instance-location, check-instance-stdin, init-build-local.properties">
+  <target name="config" depends="init-build-local.properties">
 
     <dirname property="project.base" file="." />  	
   	<basename property="project.dir" file="." />
   	
     <property name="app.home" value="${project.base}/${project.dir}"/>
 
-    <echo>instance: ${instance}</echo>
   	<echo>project.base: ${project.base}/${project.dir}</echo>
-    <echo>config.home: ${config.home}</echo>
+	<echo>config.home: ${config.home}</echo>
   	<echo>bin.home: ${bin.home}</echo>
-  	<echo>appserver.home: ${appserver.home}</echo>
+  	<echo>appserver.lib: ${appserver.lib}</echo>
   	
   	<!-- copy conf/templates/* to conf/ -->
     <copy overwrite="true" todir="${config.home}">
@@ -148,8 +146,8 @@
   	<javac srcdir="${compile.dirs}" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}">
 	  	<classpath>
 		  	<path refid="compile.classpath"/>
-		  	<fileset dir="${appserver.home}">
-			  	<include name="lib/*.jar"/>
+		  	<fileset dir="${appserver.lib}">
+			  	<include name="*.jar"/>
 			</fileset>
 	  	</classpath>
   	</javac>  	
@@ -160,12 +158,8 @@
 	<copy todir="${webinf.home}/lib">
 		<fileset dir="lib">
 		  	<include name="*.jar"/>
-			<!-- special for lts code! -->
-			<include name="../lib_lts/*.jar"/>
 	  	</fileset>
   	</copy>
-  	
- 
   	
   	<!-- copy all configuration files from conf/ to WEB-INF/classes -->
 	<copy todir="${webinf.home}/classes">
@@ -292,38 +286,6 @@
 
 
 
-
-  <target name="check-instance-location" unless="instance">
-
-    <dirname property="project.base" file="." />
-    <basename property="project.dir" file="." />
-   
-    <condition property="instance" value="prod">
-      <equals arg1="${project.base}/${project.dir}" arg2="/home/${app.name}/prod" />
-    </condition>
-    <condition property="instance" value="qa">
-      <equals arg1="${project.base}/${project.dir}" arg2="/home/${app.name}/qa" />
-    </condition>
-    <condition property="instance" value="dev">
-      <equals arg1="${project.base}/${project.dir}" arg2="/home/${app.name}/dev" />
-    </condition>
-    
-  </target>
-
-
-  <target name="check-instance-stdin" unless="instance">
-    <echo>
-       You will be prompted for the instance.
-    </echo>
-     <input message="Enter instance you want to use:"
-            validargs="dev,qa,prod"
-            addproperty="instance" />
-  </target>
-
- 
-
-
-
 	
 	
 	<!-- ====================================== NEW BUILD 2.0 deployment tasks ==================================== -->
@@ -359,7 +321,7 @@
 	</target>
 	
 	
-	<target name="deploy" description="deploy to jboss">
+	<target name="deploy" description="deploy to jboss/tomcat">
 			<echo>deploying ${deployments.home}/${war-file}</echo>
 			<copy file="webapps/${war-file}" todir="${deployments.home}" />
 	</target>

@@ -1,11 +1,18 @@
+
+# for the configuration .properties and .xml files:
 # expected: a fully-defined URL to the solr instance
 solr.url=
-
-# if you're building a war, you need this stuff:
-catalina.home= 
-appserver.home=
-java.home=
 #default for ecru.solr.home is {absolute path to ecru}/solr 
 ecru.solr.home=
-# if defined, the solr data will be somewhere other than the default location
+# if defined, the solr data will be somewhere other than the default location; 
+# REMOVE THE NEXT LINE if you're using the default!!
 ecru.solr.data= 
+
+# needed for compiling:
+# you need a pointer to the jars of the webserver (e.g.: /usr/local/tomcat-7/lib/ )
+appserver.lib=
+java.home=
+
+# if you're building a war, this is where you'll move the war when built
+deployments.home
+
