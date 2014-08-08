@@ -11,8 +11,7 @@ ecru.solr.data=
 # needed for compiling:
 # you need a pointer to the jars of the webserver (e.g.: /usr/local/tomcat-7/lib/ )
 appserver.lib=
-java.home=
 
 # if you're building a war, this is where you'll move the war when built
-deployments.home
+deployments.home=
 
