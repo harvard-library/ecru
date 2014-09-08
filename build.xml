@@ -163,7 +163,7 @@
   	
   	<!-- copy all configuration files from conf/ to WEB-INF/classes -->
 	<copy todir="${webinf.home}/classes">
-		<fileset dir="conf">
+		<fileset dir="etc/conf">
 		  	<include name="*.properties"/>
 			<include name="*.xml"/>
 	  	</fileset>
@@ -299,7 +299,7 @@
 	
 	<target name="war" depends="config, compile">
 			<delete file="webapps/${war-file}" />
-			<war warfile="webapps/${war-file}" webxml="${web-xml-file}">
+			<war warfile="webapps/${war-file}" webxml="${web-xml-file}" duplicate="preserve">
 				<classes dir="${webinf.home}/classes">
 						<include name="*.properties" />
 				</classes>
