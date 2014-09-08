@@ -37,7 +37,7 @@
   <!-- People who want to hardcode their "Solr Home" directly into the
        WAR File can set the JNDI property here...
    -->
-<!-- **** THIS IS WHERE YOU CHANGE THE LOCATION OF SOLR_HOME **** ->
+<!-- **** THIS IS WHERE YOU CHANGE THE LOCATION OF SOLR_HOME **** -->
     <env-entry>
        <env-entry-name>solr/home</env-entry-name>
        <env-entry-value>/usr/local/solr</env-entry-value>
