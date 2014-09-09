@@ -39,6 +39,6 @@ reading.title  | X | X |  | X |
 reading.order |  | X | | X | (default: -1) The order of the reading in the list of readings
 reading.annotation |  | X | | X | A note to the student
 course.name_str   | X |  | X| | Used for sorting/faceting by course name
- course.instructor_str  | X |  || X| | Used for sorting/faceting by Instructor name
+ course.instructor_str  | X |  |X| | Used for sorting/faceting by Instructor name
  reading.author_str  | X |  | |X|  Used for sorting/faceting by author name
  reading.journal_str | X |  | |X| Used for sorting/faceting by journal
