@@ -10,15 +10,15 @@ type  | X | X | X | X | **"reading"** or  **"course"**
  updated  | X | X |  X | X |  Date last updated
  start_date  | X | X |  X | X | Course start date
  end_date  | X | X | X| | Course end date
- term  | X | X | Term name; e.g.: "Fall 2013"
+ term  | X | X | X| X| Term name; e.g.: "Fall 2013"
  course.name  | X | X | X| |
  course.division  | X | X |  X|  |For Harvard, the Faculty/School abbreviation (e.g: HDS)
  course.cat_no  | X | X |  X|  | The catalogue number
  course.url  |  | X | X|  |
- course.instructor  | X | X |  | Multiple field (Last |  First)
+ course.instructor  | X | X |  | Multiple field (Last,   First)
  course.has_readings  | X | X | | true or false
- reading.author  | X | X |  | X | "ultiple field (Last |  First)
- reading.editor  | X | X |  | X |Multiple field (Last |  First)
+ reading.author  | X | X |  | X | Multiple field (Last,  First)
+ reading.editor  | X | X |  | X |Multiple field (Last,  First)
  reading.first_author  | X |  | | X | Used for sorting by author
 reading.title  | X | X |  | X |
  reading.chapter  | X | X |  | X |
