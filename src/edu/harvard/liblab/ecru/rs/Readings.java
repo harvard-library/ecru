@@ -65,7 +65,7 @@ public class Readings {
 			}
 			
 		}
-		fqs.add(cidFq.substring(1, cidFq.length() -1));
+		fqs.add(cidFq.substring(0, cidFq.length() -1));
 		HashMap<String,List<String>> facetMap = ResourceUtils.getFacetMap(req);
 		ArrayList<String> min = new ArrayList<String>();
 		min.add("2");
