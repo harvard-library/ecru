@@ -50,7 +50,7 @@ The **ecru.war** file at etc/ecru.war is distributed with the default URL for th
 $ cd etc
 $ unzip ecru.war WEB-INF/classes/ecru.properties
 #edit WEB-INF/web.xml, replacing /put/your/solr/home/here with the full path to your solr home (.e.g. /usr/local/mystuff/solr)
-jar -uf  ecru.war WEB-INF/classes/ecru.properties
+$ jar -uf  ecru.war WEB-INF/classes/ecru.properties
 ``` 
 Copy **ecru.war** to your server's **webapps/**
 
