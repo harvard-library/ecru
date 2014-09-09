@@ -15,8 +15,8 @@ type  | X | X | X | X | **"reading"** or  **"course"**
  course.division  | X | X |  X|  |For Harvard, the Faculty/School abbreviation (e.g: HDS)
  course.cat_no  | X | X |  X|  | The catalogue number
  course.url  |  | X | X|  |
- course.instructor  | X | X |  | Multiple field (Last,   First)
- course.has_readings  | X | X | | true or false
+ course.instructor  | X | X | X | | Multiple field (Last,   First)
+ course.has_readings  | X | X |X | | true or false
  reading.author  | X | X |  | X | Multiple field (Last,  First)
  reading.editor  | X | X |  | X |Multiple field (Last,  First)
  reading.first_author  | X |  | | X | Used for sorting by author
