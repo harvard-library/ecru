@@ -174,7 +174,7 @@ public class LoadCsvData {
 		long end = System.currentTimeMillis();
 		long courseTime = (end - start) / (long)1000;
 		System.out.println(numRecs + " records found, of which " + errRecs + 
-				" had a problem; time: " + courseTime + "seconds (" + (courseTime/(long)60) +" minutes)" );
+				" had a problem; time: " + courseTime + " seconds " + ((courseTime > 60)?("("  + (courseTime/(long)60) +" minutes)" ):""));
 		System.exit(0);
 	}
 	/**
