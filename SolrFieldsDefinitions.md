@@ -1,6 +1,8 @@
-# Fields available through Ecru
+# Solr Fields Defintions
 
-Below is a table of the fields available from the Solr database available to Ecru.  All dates are in [ISO 8601 combined date time format](https://en.wikipedia.org/wiki/ISO_8601 "Link to wikipedia article").
+Below is a table of the fields defined in the **ecru_v2.schema** in the Solr database.  All dates are in [ISO 8601 combined date time format](https://en.wikipedia.org/wiki/ISO_8601 "Link to wikipedia article"). Any field marked as *Indexed* can be used to created native solr search and faceting queries.  All fields can, of course, be used with a native solr query using the **fl** parameter.
+
+
 
 Field Name | Indexed? | Stored? | Course? | Reading | Comment
 :---------- | :--------: | :-------: | :-------: | ------- | ----
