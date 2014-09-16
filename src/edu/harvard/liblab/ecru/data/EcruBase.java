@@ -418,7 +418,7 @@ public class EcruBase {
 
 	public void setAuthors(List<String> authors) {
 		this.authors = DataUtils.trimList(authors);
-		if (this.authors.size() > 0) {
+		if (this.authors != null && this.authors.size() > 0) {
 			this.setFirstAuthor(this.authors.get(0));
 		} else
 			this.setFirstAuthor(null);

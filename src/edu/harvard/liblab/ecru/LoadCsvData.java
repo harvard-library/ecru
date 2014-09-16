@@ -173,6 +173,15 @@ public class LoadCsvData {
 		}
 		long end = System.currentTimeMillis();
 		long courseTime = (end - start) / (long)1000;
+		try {
+			solrSrvr.optimize();
+		} catch (SolrServerException e) {
+			e.printStackTrace();
+			System.exit(1);
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
 		System.out.println(numRecs + " records found, of which " + errRecs + 
 				" had a problem; time: " + courseTime + " seconds " + ((courseTime > 60)?("("  + (courseTime/(long)60) +" minutes)" ):""));
 		System.exit(0);
