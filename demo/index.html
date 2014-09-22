@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Electronic Course Reserves Unleashed!</title>
+	<meta name="description" content="A Proof-of-concept page">
+	<meta name="author" content="Bobbi Fox, Library Technology Services, Harvard University">
+	
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+  ================================================== -->
+  <link rel="shortcut icon" href="http://library.harvard.edu/sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/skeleton.css">
+	<link rel="stylesheet" href="stylesheets/layout.css">
+<link rel="stylesheet" href="stylesheets/ecru.css">
+	<!--[if lt IE 9]>
+		<script src="js/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons  FOX: REWRITE
+	================================================== -->
+	  <link rel="shortcut icon" href="http://library.harvard.edu/sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+	<!-- <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png"> -->
+	<!-- Scripts
+	================================================== 	 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript" src="js/ecru.js"></script>
+<script type="text/javascript">
+var baseUrl = "http://webservices.lib.harvard.edu/ecru/v2/";
+var origUrl = "";
+var currUrl = "";
+
+function goBack() {
+	if (backUrl) {
+		doSearch("", backUrl, true);
+		backUrl = "";
+	}
+}
+function doSearch(searchStuff, inUrl,isOrig) {
+	var url = inUrl;
+	if (!url) {
+	 url = baseUrl + "/all?q=";
+	}
+	if (searchStuff) {
+		url = url + searchStuff;
+	}
+	//alert(url);
+	$.ajax({
+		url: url,
+		dataType: "jsonp",
+		jsonp: "jsonp",
+		crossDomain: true,
+		data: {},
+		success: function(data) {
+			currUrl = url;
+			if (isOrig) {
+				origUrl = currUrl;
+			}
+	    var results = document.getElementById('rs');
+	    $(results).empty();
+	    var $sum = getSummary(data.summary);
+	    
+	    $(results).append($sum);
+	    $divResults = $("<div class='results'></div>");
+	    $ul = $("<ul class='resultsList'></ul>");
+	    for (var i = 0; i < data.items.length; i++) {
+	      $ul.append(doItem(data.items[i]));
+	    }
+	    $divResults.append($ul);
+	    $(results).append($divResults);
+	    var facets = document.getElementById('fc');
+	    $(facets).empty();
+	    
+	    if (data.faceting) {
+	    	var str = doFaceting(data.faceting);
+	    	var fcDiv = document.createElement("DIV");
+	    	fcDiv.innerHTML = str;
+	    	facets.appendChild(fcDiv);
+	    	
+		}
+	 	 }
+		});
+	return false;
+}
+
+$(document).ready(function() {
+	$("#search").click(function(){
+		var path = $("input:radio[name='keyw']:checked").val();
+		var url = baseUrl + path;
+		doSearch($("#searchStuff").val(), url, true);
+		backUrl = "";
+		return false;
+	});
+	$(document).on("click", "#back", function() {
+		goBack();
+	});
+	$(document).on("click", "a.solr",function() { 
+			doSearch("", $(this).attr("href"));
+								backUrl = origUrl;
+								return false;
+	});
+	$("#closeAbout").on("click", function (){
+		$("#about").hide();
+	    
+	    $("#openAbout").show();
+	    $(this).hide();
+	});
+	$("#openAbout").on("click", function (){
+		$("#about").show();
+	    $("#closeAbout").parent().show();
+	    $("#closeAbout").show();
+	    
+	    $(this).hide();
+	}
+	);
+});
+
+</script>
+</head>
+<body>
+
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+
+	
+
+	<div class="container">
+		<div class="sixteen columns">
+			<h1 class="remove-bottom" style="margin-top: 40px"><img src="images/liblogo.png" alt="Harvard Library"/> Electronic Course Reserves Unleashed!</h1>
+			<hr />
+			<a href="#" class="openDiv button" id="openAbout">Read about ecru</a>
+	
+		
+		  <div id="about">
+			<h3>About Course Reserves Unleashed! (ecru)</h3>
+			<p >
+				<strong>ecru</strong>  consists of 
+				the  <strong>ecru 
+				(<u>e</u>lectronic <u>c</u>ourse <u>r</u>eserves <u>u</u>nleashed)</strong> database, an instance of 
+				<a href="http://lucene.apache.org/solr/" target="_new">Apache Solr 4.*</a>,
+				which backs a robust RESTful API pattern set for querying the books, 
+				articles, and weblinks that are &quot;reserved&quot; for a particular course.</p>
+				<p>At Harvard, a job that updates the <strong>ecru</strong> database with 
+				data from the 
+				<a href="http://hul.harvard.edu/ois/systems/rlist/" target="_new">Reserves List System</a>
+				(aka the &quot;Reserves Tool&quot;) runs frequently, but the underlying <strong>ecru</strong> software is designed to 
+				support reserves data from other sources as well.
+			</p>
+			<hr />		
+		</div>
+		<p>
+		<a href="#" class="closeDiv button" id="closeAbout">Hide this description</a>
+			</p>
+		</div>
+		<div class="four columns ">
+
+		
+		<div>
+		<h4>Searching</h4>
+		<p>Let your cursor linger over each of the choices below to see the underlying API pattern endpoint.</p>
+<form id="searchForm" name="searchForm">
+Search: <input type="text" name="searchStuff" id="searchStuff"/>
+
+<input type="submit" value="Search" id="search" />
+<div>
+<label title="/all/terms/current?q="><input type="radio" name="keyw" value="all/terms/current?q=" checked="checked"/> Keywords anywhere</label>
+<label title="/readings/terms/current?q=*:*&fq=reading.author:" ><input type="radio" name="keyw" value="readings/terms/current?q=*:*&fq=reading.author:" /> Author keywords</label>
+<label title="/readings/terms/current?q=*:*&fq=reading.title:"><input type="radio" name="keyw" value="readings/terms/current?q=*:*&fq=reading.title:" />Title keywords</label>
+<label title="/courses/terms/current?q="><input type="radio" name="keyw" value="courses/terms/current?q=" />Course keywords</label>
+</div>
+</form></div>
+<div id="fc">
+</div>
+</div>
+		<div class="twelve columns">
+			
+
+<div id="rs">
+
+</div>
+
+
+		</div>
+
+	</div><!-- container -->
+	<hr/>
+<footer>This is a <img src="images/LL_mini.png" alt=""/> <a href="http://lab.library.harvard.edu/" target="ll" title="Harvard Library Lab">Library Lab</a> project, 
+funded with the generous support of the <a href="http://www.arcadiafund.org.uk/" target="_new">Arcadia Fund</a></footer>
+
+<!-- End Document
+================================================== -->
+</body>
+</html>

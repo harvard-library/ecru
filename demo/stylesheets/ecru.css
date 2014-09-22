@@ -1,0 +1,39 @@
+/* for Test.html */
+
+u {font-weight: bold;}
+div.results ul.resultsList li { list-style-type: none; padding-bottom: 5px; margin-bottom: 5px;}
+div.results ul.resultsList li.course {
+ 	 background: url(../icons/lecture_blue.png) no-repeat;
+	padding-left: 50px;
+ }
+ div.results ul.resultsList li.reading {
+  background: url(../icons/reading.png) no-repeat;
+  padding-left: 50px;
+}
+div.results {clear: both; top-margin: 5px; top-padding: 5px;}
+.pn: {width: 50%; }
+/*span.title {font-weight:bold; color:#990033;}*/
+span.title {font-weight:bold; color:#293352;}
+span.no {font-style:italic;}
+span.next {margin-left: 5px; padding-left: 5px; float:right;}
+
+span.avail{color: #52854c;}
+span.process{color: #c4961a;}
+span.required{background: url(../icons/required_star.png) no-repeat;
+padding-left: 18px;}
+span.req_read{color: #d16103;}
+
+blockquote.annotation { font-size: inherit; margin-top: 1px;
+line-height: inherit; padding-top: 2px; color: #8c8179;}
+
+.openDiv {}
+.closeDiv {display:none;}
+#about {display:none;}
+/*a {color:black}
+a:hover {color:gold} */
+#rs { float:left; width: 98%;}
+#fc { }
+#fc ul {list-style-type: none; margin-left: 1em; }
+#fc ul li ul{list-style-type: none;}
+
+footer {text-align: center}
