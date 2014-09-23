@@ -67,6 +67,7 @@ function doSearch(searchStuff, inUrl,isOrig) {
 		data: {},
 		success: function(data) {
 			currUrl = url;
+			var allReadings =  (url.indexOf("rows=100") === -1);
 			if (isOrig) {
 				origUrl = currUrl;
 			}
@@ -78,7 +79,7 @@ function doSearch(searchStuff, inUrl,isOrig) {
 	    $divResults = $("<div class='results'></div>");
 	    $ul = $("<ul class='resultsList'></ul>");
 	    for (var i = 0; i < data.items.length; i++) {
-	      $ul.append(doItem(data.items[i]));
+	      $ul.append(doItem(data.items[i], allReadings));
 	    }
 	    $divResults.append($ul);
 	    $(results).append($divResults);

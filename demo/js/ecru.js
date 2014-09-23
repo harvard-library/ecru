@@ -141,7 +141,7 @@ function doFaceting(faceting) {
 
 
 // handle and item, returning a jQuery object (<li>)
-function doItem(item) {
+function doItem(item, allReadings) {
 	var liClass=item.type;
 	var $li = $("<li class='" + item.type + "' id='" + item.id + "'></li>");
 	
@@ -151,7 +151,7 @@ function doItem(item) {
     }
     thisResult = thisResult + 	"'>" + item.displayLabel + "</span>";
     if (item.type == "reading") {
-  	  thisResult = thisResult + doReading(item);
+  	  thisResult = thisResult + doReading(item, allReadings);
     }
     else {
   	  thisResult = thisResult + doCourse(item);
@@ -162,7 +162,7 @@ function doItem(item) {
 
 }
 
-function doReading(item) {
+function doReading(item, allReadings) {
 	var str = " (" + item.term + ")";
 	if (item.digUrl) {
 		str =str + "<br/> <a href='" + item.digUrl + "' class='online' target='digRead'><img src='icons/online.png' title='Read Online'/></a>";
@@ -211,8 +211,11 @@ function doReading(item) {
 	}
 	
 	str = str + "<br/> <a href='" + item.courseUrl +"' target='_new' class='solr'>Course Information</a>"
-	str = str + "&nbsp;&nbsp;<a href='" + baseUrl + "readings/courses/" + item.courseId + "?rows=100&sort=reading.first_author+asc";
-	str = str +"' target='_new' class='solr'>All readings for the course </a> ";
+	if (allReadings) {
+		str = str + "&nbsp;&nbsp;<a href='" + baseUrl + "readings/courses/" + item.courseId + "?rows=100&sort=reading.first_author+asc";
+		str = str +"' target='_new' class='solr'>All readings for the course </a> ";
+	}
+	
 		
 
 	return str;
