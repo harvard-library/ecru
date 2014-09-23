@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Unlocking the Door</title>
     <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/moon.css" id="theme">    
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">    
     <!--Add support for earlier versions of Internet Explorer -->
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
@@ -30,7 +30,7 @@
 <p style="text-align: center;"><strong>Gloria Korsman</strong>, Andover-Harvard Theological Library, Harvard University, gloria_korsman@harvard.edu</p>
 
 <br>
-<p style="text-align: center;"><em>This is a Harvard Library Lab project, funded with the generous support of the <a href="http://www.arcadiafund.org.uk/about-arcadia/about-arcadia.aspx" data-url="http://www.arcadiafund.org.uk/about-arcadia/about-arcadia.aspx">Arcadia Fund</a></em></p>
+<p style="text-align: center;"><em>This is a Harvard Library Lab <img src="../demo/images/LL_mini.png" style="border: 0px; vertical-align:middle" alt=""/> project, funded with the generous support of the <a href="http://www.arcadiafund.org.uk/about-arcadia/about-arcadia.aspx" data-url="http://www.arcadiafund.org.uk/about-arcadia/about-arcadia.aspx">Arcadia Fund</a></em></p>
 
 </section>
 
@@ -90,15 +90,65 @@
 		</ul>
                 
 </section>
-
 <section>
-                <h2> title </h2>
-                <p>text</p>
-                
+<h2>Getting from there to here</h2>
 </section>
+<section data-background="reading_list_er.png">
+                <h2 style="color: #000000">Reserves Tool</h2>
+ </section>          
+ <section data-background="#000000">
+	 <section>
+	<h2>Reserves for a single course</h2>
+	<img src="rlist_readingList.png" alt="A Reserves Tool reading list"/>
+	</section>
 
+	<section>
+	 <h2>The "status" selector</h2>
+	 <img src="rlist_status.png" alt="The options are lettered 'A' through 'Y'!"/>
+	</section>
+	<section>
+	<h2>Processing a new reserves request</h2>
+	<img src="new_request.png" alt="This is what the librarian sees when a request is made"/>
+	
+	</section>
+</section>
+<section>
+<section>
+<h2>Design considerations</h2>
+<h3>We wanted ...</h3>
+<ul>
+<li> To forget about SOAP!</li>
+<li> Not to put a REST-ful wrapper around the Oracle database</li>
+<li> Good &quot;searchability&quot;</li>
+<li> Something lightweight (*) </li>
+<li> To be able to load in data outside our Reserves Tool</li>
 
+</ul>
+<p style="float:right; font-size: 0.5em;"><a href="#/mah">*</a> Something to show off at @AccessLibCon</p>
 
+	
+</section>
+<section>
+<section id="mah">
+	<h2>Just because Calvin Mah beat me to the punch doesn't mean I'm not&nbsp;still&nbsp;standing!</h2>
+	</section>
+</section>
+</section>
+<section>
+<h2>Implementation</h2>
+<ul>
+<li>Solr 4 is used as a NoSQL database</li>
+<li>Both course information and reserve item information is expressed in a single <em>schema</em> file</li>
+<li>Yeah, it's done in java.  I know that means I'm not one of the Kewl Kidz<</li>
+
+<li> The ecru repo on GitHub <a href="https://github.com/harvard-library/ecru">github.com/harvard-library/ecru</a> 
+has means of loading data via CSV file(s)</li>
+<li> Reserves data is loaded from the Reserves Tool via a cron job that runs periodically</li>
+</ul>
+</section>
+<section>
+<a href="http://harvard-library.github.io/ecru/demo/index.html" title="it's on GitHub!" target="ecruDemo">demo</a>
+</section>
  
             </div>
     </div>
