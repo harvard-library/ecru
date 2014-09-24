@@ -58,6 +58,8 @@ function doSearch(searchStuff, inUrl,isOrig) {
 	if (searchStuff) {
 		url = url + searchStuff;
 	}
+	$("#naked").attr("href", url + "&jsonp=jsonp");
+	$("#naked").show();
 	//alert(url);
 	$.ajax({
 		url: url,
@@ -185,7 +187,8 @@ Search: <input type="text" name="searchStuff" id="searchStuff"/>
 <label title="/readings/terms/current?q=*:*&fq=reading.title:"><input type="radio" name="keyw" value="readings/terms/current?q=*:*&fq=reading.title:" />Title keywords</label>
 <label title="/courses/terms/current?q="><input type="radio" name="keyw" value="courses/terms/current?q=" />Course keywords</label>
 </div>
-</form></div>
+</form>
+<p><a id="naked" style="display:none" target="naked" title="see the JSON response">Naked link</a></p></div>
 <div id="fc">
 </div>
 </div>
