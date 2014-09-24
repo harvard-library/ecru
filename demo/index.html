@@ -52,11 +52,16 @@ function goBack() {
 }
 function doSearch(searchStuff, inUrl,isOrig) {
 	var url = inUrl;
+	var allReadings = true;
+	
 	if (!url) {
 	 url = baseUrl + "/all?q=";
 	}
 	if (searchStuff) {
 		url = url + searchStuff;
+	}
+	if (url.indexOf("rows=100") > -1) {
+		allReadings = false;
 	}
 	$("#naked").attr("href", url + "&jsonp=jsonp");
 	$("#naked").show();
@@ -80,7 +85,7 @@ function doSearch(searchStuff, inUrl,isOrig) {
 		    $divResults = $("<div class='results'></div>");
 		    $ul = $("<ul class='resultsList'></ul>");
 		    for (var i = 0; i < data.items.length; i++) {
-		      $ul.append(doItem(data.items[i]));
+		      $ul.append(doItem(data.items[i], allReadings));
 		    }
 		    $divResults.append($ul);
 		    $(results).append($divResults);
