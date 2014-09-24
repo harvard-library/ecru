@@ -58,6 +58,7 @@ function doSearch(searchStuff, inUrl,isOrig) {
 	if (searchStuff) {
 		url = url + searchStuff;
 	}
+	var allReadings =  (url.indexOf("rows=100") === -1);
 	//alert(url);
 	$.ajax({
 		url: url,
@@ -67,41 +68,41 @@ function doSearch(searchStuff, inUrl,isOrig) {
 		data: {},
 		success: function(data) {
 			currUrl = url;
-			var allReadings =  (url.indexOf("rows=100") === -1);
 			if (isOrig) {
 				origUrl = currUrl;
 			}
-	    var results = document.getElementById('rs');
-	    $(results).empty();
-	    var $sum = getSummary(data.summary);
-	    
-	    $(results).append($sum);
-	    $divResults = $("<div class='results'></div>");
-	    $ul = $("<ul class='resultsList'></ul>");
-	    for (var i = 0; i < data.items.length; i++) {
-	      $ul.append(doItem(data.items[i], allReadings));
-	    }
-	    $divResults.append($ul);
-	    $(results).append($divResults);
-	    var facets = document.getElementById('fc');
-	    $(facets).empty();
-	    
-	    if (data.faceting) {
-	    	var str = doFaceting(data.faceting);
-	    	var fcDiv = document.createElement("DIV");
-	    	fcDiv.innerHTML = str;
-	    	facets.appendChild(fcDiv);
-	    	
-		}
+		    var results = document.getElementById('rs');
+		    $(results).empty();
+		    var $sum = getSummary(data.summary);
+		    
+		    $(results).append($sum);
+		    $divResults = $("<div class='results'></div>");
+		    $ul = $("<ul class='resultsList'></ul>");
+		    for (var i = 0; i < data.items.length; i++) {
+		      $ul.append(doItem(data.items[i], allReadings));
+		    }
+		    $divResults.append($ul);
+		    $(results).append($divResults);
+		    var facets = document.getElementById('fc');
+		    $(facets).empty();
+		    
+		    if (data.faceting) {
+		    	var str = doFaceting(data.faceting);
+		    	var fcDiv = document.createElement("DIV");
+		    	fcDiv.innerHTML = str;
+		    	facets.appendChild(fcDiv);
+		    	
+			}
 	 	 },
 	 	// code to run if the request fails; the raw request and
 	 	// status codes are passed to the function
 	 	error: function( xhr, status, errorThrown ) {
-	 	alert( "Sorry, there was a problem!" );
-	 	console.log( "Error: " + errorThrown );
-	 	console.log( "Status: " + status );
-	 	console.dir( xhr );
-	 	}
+		 	alert( "Sorry, there was a problem!" );
+		 	console.log( "Error: " + errorThrown );
+		 	console.log( "Status: " + status );
+		 	console.dir( xhr );
+	 		}
+	 		
 		});
 	return false;
 }
