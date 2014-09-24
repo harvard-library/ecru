@@ -58,7 +58,7 @@ function doSearch(searchStuff, inUrl,isOrig) {
 	if (searchStuff) {
 		url = url + searchStuff;
 	}
-	var allReadings =  (url.indexOf("rows=100") === -1);
+	var allReadings =  (url.indexOf("rows=100") > -1);
 	//alert(url);
 	$.ajax({
 		url: url,
@@ -101,6 +101,11 @@ function doSearch(searchStuff, inUrl,isOrig) {
 		 	console.log( "Error: " + errorThrown );
 		 	console.log( "Status: " + status );
 		 	console.dir( xhr );
+	 		},
+	 	// code to run regardless of success or failure
+	 		complete: function( xhr, status ) {
+	 			console.log( "The request is complete!" );
+	 			console.log(xhr);
 	 		}
 	 		
 		});
