@@ -183,14 +183,14 @@ $(document).ready(function() {
 		<h4>Searching</h4>
 		<p>Let your cursor linger over each of the choices below to see the underlying API pattern endpoint.</p>
 <form id="searchForm" name="searchForm">
-Search: <input type="text" name="searchStuff" id="searchStuff"/>
+<label for="searchStuff">Search:</label> <input type="text" name="searchStuff" id="searchStuff"/>
 
 <input type="submit" value="Search" id="search" />
 <div>
-<label title="/all/terms/current?q="><input type="radio" name="keyw" value="all/terms/current?q=" checked="checked"/> Keywords anywhere</label>
-<label title="/readings/terms/current?q=*:*&fq=reading.author:" ><input type="radio" name="keyw" value="readings/terms/current?q=*:*&fq=reading.author:" /> Author keywords</label>
-<label title="/readings/terms/current?q=*:*&fq=reading.title:"><input type="radio" name="keyw" value="readings/terms/current?q=*:*&fq=reading.title:" />Title keywords</label>
-<label title="/courses/terms/current?q="><input type="radio" name="keyw" value="courses/terms/current?q=" />Course keywords</label>
+<label title="/all/terms/current?q=" for="anyw"><input type="radio" name="keyw" value="all/terms/current?q=" id="anyw" checked="checked"/> Keywords anywhere</label>
+<label title="/readings/terms/current?q=*:*&fq=reading.author:"  for="authk"><input type="radio" id="authk" name="keyw" value="readings/terms/current?q=*:*&fq=reading.author:" /> Author keywords</label>
+<label title="/readings/terms/current?q=*:*&fq=reading.title:" for="titk"><input type="radio" id="titk"name="keyw" value="readings/terms/current?q=*:*&fq=reading.title:" />Title keywords</label>
+<label title="/courses/terms/current?q=" for="crsk"><input type="radio" id="crsk" name="keyw" value="courses/terms/current?q=" />Course keywords</label>
 </div>
 </form>
 <p><a id="naked" style="display:none" target="naked" title="see the JSON response">Naked link</a></p></div>
