@@ -1,0 +1,31 @@
+/* classes are harvard colors; anything ending in Back is for the background color */
+
+.crimson { color: #A51C30; }
+.crimsonBack{ background-color: #A51C30;}
+
+.ink {color: #1E1E1E}
+.inkBack {background-color: #1E1E1E}
+.mortar {color: #8C8179}
+.mortarBack {background-color: #8C8179}
+.parchment {color: #F3F3F1}
+.parchmentBack {background-color: #F3F3F1}
+.slate {color: #8996A0}
+.slateBack {background-color: #8996A0}
+.shade {color: #BAC5C6}
+.shadeBack {background-color: #BAC5C6}
+.indigo {color: #293352}
+.indigpBack {background-color: #293352}
+.bluebonnet {color: #4E84C4}
+.bluebonnetBack {background-color: #4E84C4}
+.ivy {color: #52854C}
+.ivyBack {background-color: #52854C}
+.pear {color: #C3D7A4}
+.pearBack {background-color: #C3D7A4}
+.saffron{color: #D16103}
+.saffronBack {background-color: #D16103}
+.creme {color: # F4EDCA}
+.cremeBack {background-color: # F4EDCA}
+.gold {color: #C4961A}
+.goldBack {background-color: #C4961A}
+.lemon {color: #FFDB6D}
+.lemonBack {background-color: #FFDB6D}
