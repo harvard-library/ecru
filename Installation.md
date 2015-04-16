@@ -1,5 +1,7 @@
 #Installation Instructions
 
+**NOTE:** Currently in the process of updating this repo.  The directions below apply to the  Release tagged as **Initial release; java 6**
+
 **ecru** is a java-based application that relies on a *solr 4* instance.
 
 ## Install and Go Instructions
