@@ -2,8 +2,7 @@
 # for the configuration .properties and .xml files:
 # expected: a fully-defined URL to the solr instance
 solr.url=
-#default for ecru.solr.home is {absolute path to ecru}/solr 
-ecru.solr.home=
+
 # if defined, the solr data will be somewhere other than the default location; 
 # REMOVE THE NEXT LINE if you're using the default!!
 ecru.solr.data= 

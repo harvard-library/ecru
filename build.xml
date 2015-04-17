@@ -24,7 +24,8 @@
   
   <!-- ==================== Build 2.0 enhancements ======================== -->
   <!--  we need this in case there's a compile against a jar in the appserver (like servlet.jar) -->
-  <property name="appserver.lib"	value="${appserver.lib}"/>	
+
+ <property name="appserver.lib"	value="${appserver.lib}"/>	
   <!-- property name="appserver.lib"	value="/usr/local/tomcat7/lib/" -->	
   <property name="war-file" 		value="${app.name}.war" />
   <property name="web-xml-file" 	value="${webinf.home}/web.xml" />
@@ -42,6 +43,8 @@
   <path id="compile.classpath">
     <fileset dir=".">
       <include name="lib/*.jar"/>
+      <!-- special for solrj code! -->
+      <include name="lib_solrj/*.jar"/>
     </fileset>
   </path>
 	
@@ -159,6 +162,9 @@
 		<fileset dir="lib">
 		  	<include name="*.jar"/>
 	  	</fileset>
+		<fileset dir="lib_solrj">
+		  	<include name="*.jar"/>
+		</fileset>
   	</copy>
   	
   	<!-- copy all configuration files from conf/ to WEB-INF/classes -->
