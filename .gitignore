@@ -7,3 +7,4 @@ etc/conf/Catalina/solr.xml
 webapps/ecru/WEB-INF/lib/*
 webapps/ecru/WEB-INF/web.xml
 /bin
+build-local.properties
