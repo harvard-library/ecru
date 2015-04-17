@@ -1,6 +1,7 @@
 
 # for the configuration .properties and .xml files:
-# expected: a fully-defined URL to the solr instance
+# expected: a fully-defined URL to the solr instance, e.g.:
+# http://localhost:8080/solr/ecru_v2
 solr.url=
 
 # if defined, the solr data will be somewhere other than the default location; 
