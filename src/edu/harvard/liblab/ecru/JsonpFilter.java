@@ -58,8 +58,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 import javax.ws.rs.core.MediaType;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 /**********************************************************************
  *   Please see LICENSE.txt
  **********************************************************************/
@@ -71,8 +70,6 @@ import org.slf4j.LoggerFactory;
 */
 public class JsonpFilter implements Filter {
  
-  /** The logger */
-  private static final Logger logger = LoggerFactory.getLogger(JsonpFilter.class);
 
   /** The querystring parameter that indicates the response should be padded */
   public static final String CALLBACK_PARAM = "jsonp";
@@ -119,10 +116,8 @@ public void init(FilterConfig config) throws ServletException {
    // Determine whether the response must be wrapped
    String callbackValue = request.getParameter(CALLBACK_PARAM);
    if (callbackValue == null || callbackValue.isEmpty()) {
-     logger.debug("No json padding requested from {}", request);
      chain.doFilter(request, originalResponse);
    } else {
-     logger.debug("Json padding '{}' requested from {}", callbackValue, request);
     // System.err.println("json request with Accept header of " + request.getHeader("Accept"));
      // Ensure the callback value contains only safe characters
      if (!SAFE_PATTERN.matcher(callbackValue).matches()) {
