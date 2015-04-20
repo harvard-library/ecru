@@ -8,11 +8,11 @@ The files in *this* directory are placed as follows:
 
 
 solr.xml
-v2/
+ecru_v2/
 	core.properties
 	conf/   
      	# contains the supporting files, including ecru_v2.xml, which contains the schema.
 
-If you are already using solr, you need merely to move v2 and its contents to your SOLR_HOME; otherwise, move this directory to the parent directory of where you intend SOLR_HOME to be.
+If you are already using solr, you need merely to move ecru_v2/ and its contents to your SOLR_HOME; otherwise, move this directory to the parent directory of where you intend SOLR_HOME to be.
 
 
